@@ -1,19 +1,19 @@
 ﻿namespace Exercise.Lib
 {
+    public struct WithdrawResult
+    {
+        public string? Error;
+        public decimal Balance;
+    }
+
+    public struct Account
+    {
+        public string AccountNumber;
+        public decimal Amount;
+    }
+
     public static class Withdraw
     {
-        public struct WithdrawResult
-        {
-            public string? Error;
-            public decimal Balance;
-        }
-
-        public struct Account
-        {
-            public string AccountNumber;
-            public decimal Amount;
-        }
-
         public class ATM
         {
             private List<Account> accounts = new()
