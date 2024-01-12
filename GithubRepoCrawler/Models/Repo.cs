@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GithubRepoCrawler.Models
+namespace GitHubRepoCrawler.Models
 {
-    public class Repo
+    public struct Repo
     {
-        public string FullName { get; set; } = null!;
-        public string Url { get; set; } = null!;
-        public string Description { get; set; } = null!;
-        public string CreatedAt { get; set; } = null!;
+        public string FullName { get; set; } 
+        public string Url { get; set; } 
+        public string Description { get; set; }
+        public string CreatedAt { get; set; } 
         public int Star { get; set; }
         public int Watch { get; set; }
         public int Fork { get; set; }
-
     }
 }
