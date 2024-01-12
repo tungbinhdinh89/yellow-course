@@ -31,7 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubRepoCrawler", "Github
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubRepoCrawlerDeserialize", "GitHubRepoCrawlerDeserialize", "{CF08ED76-F4EA-478C-8745-E1FE904DA274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubRepoCrawlerDeserialize", "GitHubRepoCrawlerDeserialize\GitHubRepoCrawlerDeserialize.csproj", "{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubRepoCrawlerDeserialize", "GitHubRepoCrawlerDeserialize\GitHubRepoCrawlerDeserialize.csproj", "{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RenderInfoRepoListView", "RenderInfoRepoListView", "{C028E4DF-F725-4DCD-8A83-BBB136CEA2BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderInfoRepoGitHubToListView", "RenderInfoRepoGitHubToListView\RenderInfoRepoGitHubToListView.csproj", "{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,10 @@ Global
 		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +101,8 @@ Global
 		{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F} = {1824B7AC-43CC-47FD-9111-5A149D54379B}
 		{CF08ED76-F4EA-478C-8745-E1FE904DA274} = {FDBA9793-7D0D-41D1-B713-B9902CF8B21F}
 		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE} = {CF08ED76-F4EA-478C-8745-E1FE904DA274}
+		{C028E4DF-F725-4DCD-8A83-BBB136CEA2BB} = {FDBA9793-7D0D-41D1-B713-B9902CF8B21F}
+		{EA4096A9-EC7D-4F9A-845F-1DC9E9A2C53D} = {C028E4DF-F725-4DCD-8A83-BBB136CEA2BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A964BD6-DFF9-4DCB-B20B-EC485F67E377}
