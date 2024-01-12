@@ -1,9 +1,4 @@
-﻿using GithubRepoCrawler.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GitHubRepoCrawler.Models;
 
 namespace GitHubRepoCrawler.Services
 {
@@ -11,7 +6,6 @@ namespace GitHubRepoCrawler.Services
     {
         public static void WriteRepos(List<Repo> repos, string folder)
         {
-            //return [];
             if (repos is null || repos.Count == 0)
             {
                 throw new ArgumentException("No repo provided");
@@ -19,6 +13,19 @@ namespace GitHubRepoCrawler.Services
 
             ArgumentException.ThrowIfNullOrWhiteSpace(folder);
 
+            foreach (Repo repo in repos)
+            {
+                var dir = repo.FullName.Split('/');
+                var output = Path.Combine(folder, dir[0]);
+
+                if (!Directory.Exists(output))
+                {
+                    Directory.CreateDirectory(output);
+                }
+
+                var fullPath = Path.Combine(output, $"{dir[1]}.txt");
+                File.WriteAllText(fullPath, $"repo {dir[1]} has {repo.Star} stars, {repo.Watch} watch and {repo.Fork} forks");
+            }
         }
     }
 }

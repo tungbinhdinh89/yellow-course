@@ -1,83 +1,71 @@
 ﻿using GitHubRepoCrawler.Models;
-namespace GithubRepoCrawler.Services
+namespace GitHubRepoCrawler.Services
 {
     public static class RepoCrawlerService
     {
         // Read file from url Repo
-        public static async Task<List<Repo>> SearchRepoGithub(string search, int take)
+        public static async Task<List<Repo>> SearchRepoGitHub(string search, int take)
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(search, nameof(search));
+            ArgumentException.ThrowIfNullOrWhiteSpace(search);
 
-            // request api service
-            var urlAPI = "https://api.github.com/search/repositories?q=";
+            // todo: encode whitespace name
+            var encodedSearch = Uri.EscapeDataString(search);
+
+            var urlAPI = $"https://api.github.com/search/repositories?q={encodedSearch}";
             using var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "C#");
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
 
-            var response = await httpClient.GetStringAsync(urlAPI+search);
+            var response = await httpClient.GetStringAsync($"{urlAPI}");
             if (string.IsNullOrWhiteSpace(response))
             {
-                return [];
+                return new List<Repo>();
             }
 
-            // read fille
+            //read file
             var lines = response.Split("\n");
             List<Repo> repos = [];
             Repo repo = new();
 
-            foreach ( var line in lines)
+            foreach (var line in lines)
             {
-                if (GetValueFor("\"full_name\"", line, out var FullName))
+                if (GetValueFor("full_name", line, out var name))
                 {
                     repo = new();
-                    repo.FullName = FullName;
-
-                    if (repos.Count < take)
-                    {
-                        repos.Add(repo);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    repo.FullName = name;
+                    repos.Add(repo);
                 }
-
-                else if (GetValueFor("\"html_url\"", line, out var url))
+                else if (GetValueFor("html_url", line, out var url)) 
                 {
+                    // todo: duplicate with owner url
                     repo.Url = url;
                 }
-
-                else if (GetValueFor("\"description\"", line, out var desc))
+                else if (GetValueFor("description", line, out var desc))
                 {
                     repo.Description = desc;
                 }
-
-                else if (GetValueFor("\"created_at\"", line, out var createdAt))
+                else if (GetValueFor("created_at", line, out var createdAt))
                 {
                     repo.CreatedAt = createdAt;
                 }
-
-                else if (GetValueFor("\"stargazers_count\"", line, out var star))
+                else if (GetValueFor("stargazers_count", line, out var star))
                 {
                     repo.Star = int.Parse(star);
                 }
-
-                else if (GetValueFor("\"watchers_count\"", line, out var watch))
+                else if (GetValueFor("watchers_count", line, out var watch))
                 {
                     repo.Watch = int.Parse(watch);
                 }
-
-                else if (GetValueFor("\"forks_count\"", line, out var fork))
+                else if (GetValueFor("forks", line, out var fork))
                 {
                     repo.Fork = int.Parse(fork);
                 }
             }
-            
-            return repos;   
+            return repos.Take(take).ToList();
         }
 
-         static bool GetValueFor(string name, string line, out string value)
+        static bool GetValueFor(string name, string line, out string value)
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(name);
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(name);
             value = "";
 
             if (string.IsNullOrWhiteSpace(line))
@@ -85,28 +73,25 @@ namespace GithubRepoCrawler.Services
                 return false;
             }
 
-            if(line.Trim().StartsWith($"\"{name}\""))
+            if (line.Trim().StartsWith($"\"{name}\""))
             {
                 value = GetValue(line);
                 return true;
             }
 
-            return true;
+            return false;
         }
 
         static string GetValue(string line)
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(line);
-
-            return line.Trim()
-                        .Trim(',')
-                        .Split(':')
-                        .Last()
-                        .Trim()
-                        .Trim('"')
-                        .Trim()
-                        ;
-
+            return line
+                .Trim() 
+                .Trim(',') 
+                .Split(':')
+                .Last()
+                .Trim()
+                .Trim('"')
+                .Trim();
         }
     }
 }
