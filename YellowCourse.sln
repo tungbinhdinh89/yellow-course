@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetInfoRepoGithub", "GetInf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GithubRepoCrawler", "GithubRepoCrawler", "{1824B7AC-43CC-47FD-9111-5A149D54379B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubRepoCrawler", "GithubRepoCrawler\GitHubRepoCrawler.csproj", "{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubRepoCrawler", "GithubRepoCrawler\GitHubRepoCrawler.csproj", "{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubRepoCrawlerDeserialize", "GitHubRepoCrawlerDeserialize", "{CF08ED76-F4EA-478C-8745-E1FE904DA274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubRepoCrawlerDeserialize", "GitHubRepoCrawlerDeserialize\GitHubRepoCrawlerDeserialize.csproj", "{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,10 @@ Global
 		{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +91,8 @@ Global
 		{0E2017DC-39C7-4518-ABE1-61E59AB04533} = {D53BE7EB-0215-4C72-8202-4939B3538C39}
 		{1824B7AC-43CC-47FD-9111-5A149D54379B} = {FDBA9793-7D0D-41D1-B713-B9902CF8B21F}
 		{B3AC1408-9B4D-4E91-893D-35F3D8E7B87F} = {1824B7AC-43CC-47FD-9111-5A149D54379B}
+		{CF08ED76-F4EA-478C-8745-E1FE904DA274} = {FDBA9793-7D0D-41D1-B713-B9902CF8B21F}
+		{7C3C9856-6674-4A6F-96C8-02F2FB056CEE} = {CF08ED76-F4EA-478C-8745-E1FE904DA274}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A964BD6-DFF9-4DCB-B20B-EC485F67E377}
