@@ -32,7 +32,7 @@ namespace GitHubRepoCrawler.Services
                 {
                     repo = new();
                     repo.FullName = name;
-                    repos.Add(repo);
+                   
                 }
                 else if (GetValueFor("html_url", line, out var url)) 
                 {
@@ -58,6 +58,7 @@ namespace GitHubRepoCrawler.Services
                 else if (GetValueFor("forks", line, out var fork))
                 {
                     repo.Fork = int.Parse(fork);
+                    repos.Add(repo);
                 }
             }
             return repos.Take(take).ToList();
