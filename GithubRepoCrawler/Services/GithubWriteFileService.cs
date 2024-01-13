@@ -24,7 +24,7 @@ namespace GitHubRepoCrawler.Services
                 }
 
                 var fullPath = Path.Combine(output, $"{dir[1]}.txt");
-                File.WriteAllText(fullPath, $"repo {dir[1]} has {repo.Star} stars, {repo.Watch} watch and {repo.Fork} forks");
+                File.WriteAllText(fullPath, $"repo {dir[1]} \n has {repo.Url} name {repo.FullName} \n description {repo.Description} \n created at {repo.CreatedAt} \n {repo.Star}  stars, \n {repo.Watch} watch \n and {repo.Fork} forks");
             }
         }
     }
