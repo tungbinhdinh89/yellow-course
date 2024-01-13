@@ -8,4 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\GitHubRepoCrawler.Lib\GitHubRepoCrawler.Lib.csproj" />
+	</ItemGroup>
 </Project>
