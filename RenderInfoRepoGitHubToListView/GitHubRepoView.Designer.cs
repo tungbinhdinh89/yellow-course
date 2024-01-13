@@ -40,6 +40,7 @@
             columnHeader7 = new ColumnHeader();
             label1 = new Label();
             comboBox1 = new ComboBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // txtSearch
@@ -122,17 +123,27 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "5", "10", "15", "20", "30", "40" });
             comboBox1.Location = new Point(388, 98);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(169, 31);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += this.comboBox1_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(211, 106);
+            label2.Name = "label2";
+            label2.Size = new Size(155, 23);
+            label2.TabIndex = 5;
+            label2.Text = "Repository to show";
             // 
             // GitHubRepoView
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1838, 827);
+            Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(label1);
             Controls.Add(lvRepoList);
@@ -158,5 +169,6 @@
         private ColumnHeader columnHeader7;
         private Label label1;
         private ComboBox comboBox1;
+        private Label label2;
     }
 }
