@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //AppService.GetFirstIntro();
+            //AppService.GetFirstIntro("Countdown Timer Calculator");
 
             //var hour = AppService.GetNumber("Enter the number of hours: ");
             //while (!(hour > 0 && hour < 24))
@@ -29,9 +29,9 @@
 
             //AppService.ConvertToSecond(hour, minutes, seconds);
 
-             //Reverse Countdown
+            //Reverse Countdown
 
-            //AppService.GetFirstIntro();
+            //AppService.GetFirstIntro("Reverse Countdown Timer Calculator");
 
             //var totalSeconds = AppService.GetNumber("Enter the number of total seconds: ");
             //while (!(totalSeconds > 0))
@@ -45,39 +45,20 @@
 
             // Seconds to Event
 
-            AppService.GetFirstIntro();
+            AppService.GetFirstIntro("Seconds to Calculator");
 
             var hour = AppService.GetNumber("Enter the number of hours: ");
-            while (!(hour > 0 && hour < 24))
-            {
-                Console.WriteLine("The hours cannot be greater than 23 or less than 0.");
-                hour = AppService.GetNumber("Enter the number of hours: ");
-            }
-
+  
             var days = AppService.GetNumber("Enter the number of days: ");
-            while (!(days > 0 && days < 365))
-            {
-                Console.WriteLine("The days cannot be greater than 365 or less than 0.");
-                days = AppService.GetNumber("Enter the number of hours: ");
-            }
-
+       
             var months = AppService.GetNumber("Enter the number of months: ");
-            while (!(months > 0 && months < 12))
-            {
-                Console.WriteLine("The months cannot be greater than 12 or less than 0.");
-                hour = AppService.GetNumber("Enter the number of hours: ");
-            }
-
+         
             var years = AppService.GetNumber("Enter the number of years: ");
-            while (!(years > 0 ))
-            {
-                Console.WriteLine("The years cannot be greater than 12 or less than 0.");
-                years = AppService.GetNumber("Enter the number of hours: ");
-            }
-
+     
             var totalSeconds = AppService.CalculateTotalSeconds(hour,days,months,years);
 
             Console.WriteLine($"The total number of seconds is: {totalSeconds}");
+
             Console.ReadKey();
         }
     }

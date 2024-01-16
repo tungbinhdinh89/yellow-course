@@ -8,9 +8,9 @@ namespace CrazyTimers
 {
     public class AppService
     {
-        public static void GetFirstIntro()
+        public static void GetFirstIntro(string msg)
         {
-            Console.WriteLine("Countdown Timer Calculator by Rob Miles");
+            Console.WriteLine($"{msg} by Rob Miles");
             Console.WriteLine("Version 1.0");
         }
 
@@ -42,16 +42,30 @@ namespace CrazyTimers
 
         public static long CalculateTotalSeconds(int hours, int days, int months, int years)
         {
-            const int secondsInMinute = 60;
-            const int minutesInHour = 60;
-            const int hoursInDay = 24;
-            const int daysInMonth = 30; 
 
-            long totalSeconds = years * 365 * daysInMonth * hoursInDay * minutesInHour * secondsInMinute
-                              + months * daysInMonth * hoursInDay * minutesInHour * secondsInMinute
-                              + days * hoursInDay * minutesInHour * secondsInMinute
-                              + hours * minutesInHour * secondsInMinute;
+            if (hours < 1 || hours > 24 ||days < 1 || days > 30 || months < 1 || months > 12 ||
+            (days > 28 && months == 2) || (days > 30 && (months == 4 || months == 6 || months == 9 || months == 11)))
+            {
+                //throw new ArgumentException("Days or month is invalid.");
+                Console.WriteLine("Days or month is invalid.");
+                return 0;
+            }
 
+            DateTime targetDate = new DateTime(years, months, days, hours, 0, 0);
+
+            if (targetDate <= DateTime.Now)
+            {
+                //throw new ArgumentException("Days and hours have passed.");
+                Console.WriteLine("Days and hours have passed.");
+                return 0;
+            }
+
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = new DateTime(years, months, days, hours, 0, 0);
+
+            TimeSpan timeRemaining = endTime.Subtract(startTime);
+
+            var totalSeconds = (long)timeRemaining.TotalSeconds;
             return totalSeconds;
         }
     }
